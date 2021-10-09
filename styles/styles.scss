@@ -1,6 +1,8 @@
 @use 'reset';
 @use 'login';
 @use 'create-user';
+@use '../component/UI/Header/header';
+@use '../component/UI/SideNav/side-nav';
 h1{
     font-size: 3rem;
 }
