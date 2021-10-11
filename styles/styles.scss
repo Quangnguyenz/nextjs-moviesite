@@ -3,6 +3,13 @@
 @use 'create-user';
 @use '../component/UI/Header/header';
 @use '../component/UI/SideNav/side-nav';
-h1{
+@use '../component/UI/FeaturedMedia/FeaturedMedia';
+@use '../component/UI/ForYouList/ForYouList';
+@use '../component/UI/JustAdded/JustAdded';
+@use '../component/UI/PosterView/PosterView';
+@use '../component/UI/CastInfo/CastInfo';
+@use '../component/UI/Account/Account';
+
+h1 {
     font-size: 3rem;
 }

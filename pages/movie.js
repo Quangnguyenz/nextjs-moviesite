@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import MainLayout from '../component/Layout/MainLayout'
+import CastInfo from '../component/UI/CastInfo/CastInfo'
 import FeaturedMedia from '../component/UI/FeaturedMedia/FeaturedMedia'
 import ForYouList from '../component/UI/ForYouList/ForYouList'
 import JustAdded from '../component/UI/JustAdded/JustAdded'
@@ -12,9 +13,8 @@ export default function HomeView() {
     return (
         <MainLayout>
             <FeaturedMedia />
-            <ForYouList />
-            <JustAdded />
             <PosterView />
+            <CastInfo />
         </MainLayout>
 
     )
