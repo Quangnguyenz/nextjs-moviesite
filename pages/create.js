@@ -1,7 +1,36 @@
 import Head from 'next/head'
-// import styles from '../styles/Home.module.css'
+import { useStateContext } from '../component/HBOProvider'
+import ls from 'local-storage'
+import { v4 } from 'uuid'
+import { useRouter } from 'next/dist/client/router';
 
 export default function createUser() {
+    const globalState = useStateContext();
+    const router = useRouter();
+    const saveUser = () => {
+        let users = [],
+            user;
+        if (ls('users') < 1) {
+            user = {
+                id: v4(),
+                user: globalState.user,
+                myListID: []
+            }
+            users.push(user)
+            ls('users', users)
+        } else {
+            users = ls('users')
+            user = {
+                id: v4(),
+                user: globalState.user,
+                myListID: []
+            }
+            users.push(user)
+            ls('users', users)
+            router.push('/login')
+        }
+
+    }
     return (
         <div>
             <div className="create-user">
@@ -13,10 +42,10 @@ export default function createUser() {
                 </div>
 
                 <div className="create-user__form">
-                    <img className="create-user__user-img" src="https://uifaces.co/our-content/donated/xZ4wg2Xj.jpg" />
+                    <img className="create-user__user-img" src={globalState.defaultUserImage} />
                     <div className="create-user__input-group">
                         <label>Name</label>
-                        <input type="text" className="create-user__input-text"></input>
+                        <input value={globalState.user} onChange={globalState.createUserAction} type="text" className="create-user__input-text"></input>
                         <div className="create-user__colors">
                             <div className="create-user__color create-user__color--active" style={{
                                 background: 'rgb(2,0,36)',
