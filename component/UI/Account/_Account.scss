@@ -24,22 +24,25 @@
     }
 
     &__watch-list {
-        display: flex;
+        display: grid;
+        flex-wrap: wrap;
+        grid-template-columns: 240px 240px 240px;
+        gap: 20px;
     }
 
     &__watch-video {
         position: relative;
-        width: 220px;
-        height: 220px;
-        margin-right: 20px;
+        width: 200px;
+        height: 200px;
+        // margin-right: 20px;
 
-        &:nth-lastt-child(1) {
-            margin-right: 0;
-        }
+        // &:nth-lastt-child(1) {
+        //     margin-right: 0;
+        // }
 
         img {
-            width: 220px;
-            height: 220px;
+            width: 200px;
+            height: 200px;
             object-fit: cover;
             object-position: center;
         }
