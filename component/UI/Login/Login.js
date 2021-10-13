@@ -9,6 +9,7 @@ const Login = () => {
     const globalState = useStateContext();
     const router = useRouter();
     const [loadingUsers, setLoadingUsers] = useState(false);
+
     let users = ls('users') !== null ? ls('users') : [];
     let { hasMounted } = useMounted();
 
@@ -28,7 +29,7 @@ const Login = () => {
         if (!loadingUsers) {
             return users.map((user) => {
                 return (
-                    <div onClick={selectUser} className="login-user__user-box" key={user.id}>
+                    <div onClick={() => selectUser(user.id)} className="login-user__user-box" key={user.id}>
                         <img className="login-user__user-img" src="https://uifaces.co/our-content/donated/xZ4wg2Xj.jpg" />
                         <div className="login-user__user-name">
                             {user.user}</div>
