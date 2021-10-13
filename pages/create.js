@@ -18,6 +18,9 @@ export default function createUser() {
             }
             users.push(user)
             ls('users', users)
+            console.log(users)
+            console.log(ls('users'))
+            router.push('/login')
         } else {
             users = ls('users')
             user = {
@@ -73,7 +76,7 @@ export default function createUser() {
 
                 <div className="create-user__buttons">
                     <button className="create-user__cancel">Cancel</button>
-                    <button className="create-user__save">Save</button>
+                    <button className="create-user__save" onClick={saveUser}>Save</button>
                 </div>
             </div>
         </div>

@@ -1,8 +1,45 @@
-import Head from 'next/head'
-import { useStateContext } from '../../HBOProvider'
+import Head from 'next/head';
+import { useStateContext } from '../../HBOProvider';
+import { useState, useEffect } from 'react';
+import ls from 'local-storage';
+import { useRouter } from 'next/dist/client/router';
+import { useMounted } from '../../Hooks/useMounted';
 
 const Login = () => {
     const globalState = useStateContext();
+    const router = useRouter();
+    const [loadingUsers, setLoadingUsers] = useState(false);
+    let users = ls('users') !== null ? ls('users') : [];
+    let { hasMounted } = useMounted();
+
+    useEffect(() => {
+        if (users < 1) {
+            setLoadingUsers(false)
+        }
+        console.log('load effect:', users)
+    }, [])
+
+    const selectUser = (id) => {
+        ls('activeUID', id)
+        router.push('/')
+    }
+
+    const showUsers = () => {
+        if (!loadingUsers) {
+            return users.map((user) => {
+                return (
+                    <div onClick={selectUser} className="login-user__user-box" key={user.id}>
+                        <img className="login-user__user-img" src="https://uifaces.co/our-content/donated/xZ4wg2Xj.jpg" />
+                        <div className="login-user__user-name">
+                            {user.user}</div>
+                    </div>)
+            })
+        }
+    }
+
+    const createUser = () => {
+        router.push('/')
+    }
 
     return (
         <div className="login-user">
@@ -14,15 +51,11 @@ const Login = () => {
             </div>
 
             <div className="login-user__form">
-                <div className="login-user__user-box">
-                    <img className="login-user__user-img" src="https://uifaces.co/our-content/donated/xZ4wg2Xj.jpg" />
-                    <div className="login-user__user-name">{globalState.test}</div>
-                </div>
+                {hasMounted ? showUsers() : ''}
             </div>
 
             <div className="login-user__buttons">
-                <button className="login-user__adult">Add Adult</button>
-                <button className="login-user__kid">Add Kid</button>
+                <button className="login-user__adult" onClick={createUser}>Create User</button>
             </div>
         </div>
     )

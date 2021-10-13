@@ -7,14 +7,11 @@ export default function Home() {
   const globalState = useStateContext();
   const router = useRouter();
   useEffect(() => {
-    const loggedIn = false;
-    if (loggedIn == false) {
-      router.push('/create')
-    }
+
   }, [])
   return (
     <div>
-      <Login />
+      Home Page
     </div>
   )
 }
