@@ -22,7 +22,7 @@ const Login = () => {
 
     const selectUser = (id) => {
         ls('activeUID', id)
-        router.push('/')
+        router.push('/home')
     }
 
     const showUsers = () => {
@@ -39,7 +39,7 @@ const Login = () => {
     }
 
     const createUser = () => {
-        router.push('/')
+        router.push('/create')
     }
 
     return (

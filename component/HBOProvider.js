@@ -12,12 +12,18 @@ export function HBOProvider({ children }) {
     const createUserAction = (e) => {
         setUser(e.target.value)
     }
+
+    // open side nav state
+    const [sideNavOpen, setSideNavOpenAction] = useState(false);
+
     return (
         <StateContext.Provider
             value={{
                 user,
                 createUserAction,
                 defaultUserImage,
+                sideNavOpen,
+                setSideNavOpenAction,
             }}>
             {children}
         </StateContext.Provider>

@@ -4,7 +4,6 @@ import ls from 'local-storage';
 import { useMounted } from './Hooks/useMounted';
 
 const AuthCheck = (component) => {
-    const [userLoggedIn, setUserLoggedIn] = useState(false)
     const router = useRouter();
     const { hasMounted } = useMounted();
 
@@ -12,9 +11,9 @@ const AuthCheck = (component) => {
     let users = ls('users') !== null ? ls('users') : [];
 
     useEffect(() => {
-        if (users.length >= 1) {
-            router.push('/login')
-        }
+        // if (users.length >= 1) {
+        //     router.push('/login')
+        // }
         if (activeUID === null && users.length < 1) {
             router.push('/create')
         }
@@ -27,7 +26,7 @@ const AuthCheck = (component) => {
                     <div className="create-user__logo"></div>
                 </div>
             </div>
-        )
+        );
     } else {
         return (
             <div className="create-user">

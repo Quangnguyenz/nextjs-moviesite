@@ -16,6 +16,5 @@ export default function HomeView() {
             <PosterView />
             <CastInfo />
         </MainLayout>
-
     )
 }

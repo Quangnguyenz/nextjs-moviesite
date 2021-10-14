@@ -1,3 +1,5 @@
+import { useStateContext } from "../../HBOProvider";
+
 const CastInfo = (props) => {
     const loopComp = (comp, digit) => {
         let thumbnails = [];
