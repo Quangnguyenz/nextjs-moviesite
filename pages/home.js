@@ -1,9 +1,7 @@
 import Head from 'next/head'
 import MainLayout from '../component/Layout/MainLayout'
-import FeaturedMedia from '../component/UI/FeaturedMedia/FeaturedMedia'
-import ForYouList from '../component/UI/ForYouList/ForYouList'
-import JustAdded from '../component/UI/JustAdded/JustAdded'
-import PosterView from '../component/UI/PosterView/PosterView'
+import FeaturedMedia from '../component/UI/FeaturedMedia/FeaturedMedia';
+import MediaRow from '../component/UI/MediaRow/MediaRow';
 
 // import styles from '../styles/Home.module.css'
 
@@ -11,10 +9,7 @@ export default function HomeView() {
     return (
         <MainLayout>
             <FeaturedMedia />
-            <ForYouList />
-            <JustAdded />
-            <PosterView />
+            <MediaRow />
         </MainLayout>
-
     )
 }
