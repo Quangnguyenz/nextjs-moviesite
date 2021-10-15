@@ -1,24 +1,24 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { shuffleArray } from '../../utilities';
 
 const MediaRow = (props) => {
     const [loadingData, setLoadingData] = useState(true)
+    const [movies, setMoviesData] = useState([])
 
     useEffect(() => {
         axios
-            .get('/user?ID=12345')
+            .get(`https://api.themoviedb.org/3/${props.endpoint}&api_key=1f3708ab08ebaadf0ef295924a2b4ac3&language=en-US`)
 
             .then(function (response) {
-                // handle success
-                console.log(response);
+                setMoviesData(shuffleArray(response.data.results))
+                setLoadingData(false)
+                console.log(response)
             })
             .catch(function (error) {
                 // handle error
                 console.log(error);
             })
-            .then(function () {
-                // always executed
-            });
     }, [])
 
     const loopComp = (comp, digit) => {
@@ -30,10 +30,12 @@ const MediaRow = (props) => {
     }
 
     const showThumbnails = () => {
-        setTimeout(() => setLoadingData(false), 3000);
         return loadingData
             ? loopComp(<Skeleton />, 10)
-            : loopComp(<Thumbnail />, 10)
+            : movies.map((movie) => {
+                console
+                return <Thumbnail movieData={movie} />
+            })
     }
 
     return (
@@ -47,9 +49,9 @@ const MediaRow = (props) => {
     )
 }
 
-const Thumbnail = () => {
+const Thumbnail = (props) => {
     return (<div className="media-row__thumbnail">
-        <img src="https://upload.wikimedia.org/wikipedia/en/c/c8/Justiceleaguetimmartpromo.jpg" />
+        <img src={`https://image.tmdb.org/t/p/original${props.movieData.poster_path}`} />
         <div className="media-row__top-layer">
             <i className="fas fa-play" />
         </div>
