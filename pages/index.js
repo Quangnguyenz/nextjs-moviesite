@@ -4,10 +4,9 @@ import { useRouter } from 'next/dist/client/router';
 import Head from 'next/head';
 import MainLayout from '../component/Layout/MainLayout';
 import FeaturedMedia from '../component/UI/FeaturedMedia/FeaturedMedia';
-import ForYouList from '../component/UI/ForYouList/ForYouList';
-import JustAdded from '../component/UI/JustAdded/JustAdded';
-import PosterView from '../component/UI/PosterView/PosterView';
 import AuthCheck from '../component/AuthCheck';
+import MediaRow from '../component/UI/MediaRow/MediaRow';
+
 
 export default function Home() {
   const globalState = useStateContext();
@@ -19,9 +18,11 @@ export default function Home() {
     <div>
       <MainLayout>
         <FeaturedMedia />
-        <ForYouList />
-        <JustAdded />
-        <PosterView />
+        <MediaRow title="Movies" type="large-v" />
+        <MediaRow title="Series" type="small-h" />
+        <MediaRow title="Action" type="small-v" />
+        <MediaRow title="Horror" type="small-v" />
+        <MediaRow title="Sci-fi" type="small-v" />
       </MainLayout>
     </div>
   )

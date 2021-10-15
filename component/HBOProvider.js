@@ -15,6 +15,9 @@ export function HBOProvider({ children }) {
 
     // open side nav state
     const [sideNavOpen, setSideNavOpenAction] = useState(false);
+    const [accountModalOpen, setAccountModalOpenAction] = useState(false);
+    const [searchOpen, setSearchOpenAction] = useState(false);
+
 
     return (
         <StateContext.Provider
@@ -24,6 +27,11 @@ export function HBOProvider({ children }) {
                 defaultUserImage,
                 sideNavOpen,
                 setSideNavOpenAction,
+                accountModalOpen,
+                setAccountModalOpenAction,
+                searchOpen,
+                setSearchOpenAction,
+
             }}>
             {children}
         </StateContext.Provider>
