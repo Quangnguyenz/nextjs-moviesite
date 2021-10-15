@@ -2,9 +2,9 @@ import Head from 'next/head'
 import { useStateContext } from '../component/HBOProvider'
 import ls from 'local-storage'
 import { v4 } from 'uuid'
-import { useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/dist/client/router'
 
-export default function createUser() {
+export default function CreateUser() {
     const globalState = useStateContext();
     const router = useRouter();
     const saveUser = () => {
