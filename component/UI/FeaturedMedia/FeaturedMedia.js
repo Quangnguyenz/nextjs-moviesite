@@ -2,15 +2,28 @@ const FeaturedMedia = (props) => {
     const clickPlay = () => {
         console.log('send user to media page')
     }
+    const showMedia = () => {
+        if (props.type === 'front') {
+            return (
+                <iframe className="featured-media__video"
+                    width="100%"
+                    height="100%"
+                    src={props.mediaUrl}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                />
+            )
+        } else {
+            return (
+                <img src={props.mediaUrl} />
+            )
+        }
+    }
+
     return (
         <div className="featured-media">
-            <iframe className="featured-media__video"
-                width="100%"
-                height="100%"
-                src={props.videoUrl}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-            />
+            {showMedia}
+
             <div className="featured-media__bg">
                 <div className="featured-media__container">
                     <div className="featured-media__title" onClick={clickPlay}>{props.title}</div>
