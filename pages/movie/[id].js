@@ -6,12 +6,13 @@ import FeaturedMedia from '../../component/UI/FeaturedMedia/FeaturedMedia'
 import MediaRow from '../../component/UI/MediaRow/MediaRow'
 import { useRouter } from 'next/router'
 import axios from "axios"
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
+import LazyLoad from 'react-lazyload';
+import PlaceHolders from '../../component/UI/PlaceHolders/PlaceHolders'
 
 export default function SingleMediaPage(props) {
     const router = useRouter()
     const [mediaData, setMediaData] = useState(false)
-    // const { id } = router.query
     useEffect(() => {
         axios
             .get(`https://api.themoviedb.org/3/movie/${props.query.id}?&api_key=1f3708ab08ebaadf0ef295924a2b4ac3&language=en-US`)
@@ -26,15 +27,16 @@ export default function SingleMediaPage(props) {
     }, [])
     return AuthCheck(
         <MainLayout>
-            <h1 style={{ color: 'white' }}>{props.query.id}</h1>
             <FeaturedMedia
                 title={mediaData.title}
-                mediaUrl={`https://image.tmdb.org/t/p/original${mediaData.backdrop_path}`}
+                mediaUrl={`https://image.tmdb.org/t/p/w1280${mediaData.backdrop_path}`}
                 location="In theaters and on HBO MAX. Streaming throughout May 23rd."
                 linkUrl="/movies/id"
                 type="single" />
-            <MediaRow title="More Like This" type="small-v" />
-            <CastInfo />
+            <LazyLoad offset={-400} placeholder={<PlaceHolders title="Movies" type="small-v" />}>
+                <MediaRow title="Similar To This" type="small-v" endpoint={`/movie/${props.query.id}/similar?`} />
+            </LazyLoad>
+            <CastInfo mediaId={props.query.id} />
         </MainLayout>
     )
 }
