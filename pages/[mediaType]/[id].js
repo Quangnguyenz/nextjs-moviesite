@@ -35,9 +35,9 @@ export default function SingleMediaPage(props) {
                 linkUrl="/movies/id"
                 type="single" />
             <LazyLoad offset={-400} placeholder={<PlaceHolders title="Movies" type="small-v" />}>
-                <MediaRow title="Similar To This" type="small-v" mediaType={props.query.mediaType} endpoint={`${props.query.mediaType === 'movie' ? props.mediaData.title : 'tv'}/${props.query.id}/similar?`} />
+                <MediaRow title="Similar To This" type="small-v" mediaType={props.query.mediaType} endpoint={`${props.query.mediaType === 'movie' ? 'movie' : 'tv'}/${props.query.id}/similar?`} />
             </LazyLoad>
-            <CastInfo mediaId={props.query.id} mediaType={props.mediaType} />
+            <CastInfo mediaId={props.query.id} mediaType={props.query.mediaType} />
         </MainLayout>
     )
 }
