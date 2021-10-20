@@ -25,8 +25,8 @@ export default function Home() {
           <MediaRow title="Movies" type="large-v" endpoint='discover/movie?sort_by=popularity.desc&primary_release_year=2021' />
         </LazyLoad>
 
-        <LazyLoad offset={-400} placeholder={<PlaceHolders title="Movies" type="small-v" />}>
-          <MediaRow title="Series" type="small-h" endpoint='discover/tv?&primary_release_year=2021' />
+        <LazyLoad offset={-400} placeholder={<PlaceHolders title="Series" type="small-v" />}>
+          <MediaRow title="Series" mediaType="series" type="small-h" endpoint='discover/tv?&primary_release_year=2021' />
         </LazyLoad>
 
         <LazyLoad offset={-400} placeholder={<PlaceHolders title="Movies" type="small-v" />}>
