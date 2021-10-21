@@ -13,6 +13,7 @@ import PlaceHolders from '../../component/UI/PlaceHolders/PlaceHolders'
 export default function SingleMediaPage(props) {
     const router = useRouter()
     const [mediaData, setMediaData] = useState(false)
+
     // useEffect(() => {
     //     axios
     //         .get(`https://api.themoviedb.org/3/movie/${props.query.id}?&api_key=1f3708ab08ebaadf0ef295924a2b4ac3&language=en-US`)

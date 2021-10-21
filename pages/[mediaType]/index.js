@@ -15,21 +15,32 @@ import { shuffleArray } from "../../component/utilities"
 export default function MediaTypePage(props) {
     const globalState = useStateContext();
     const router = useRouter();
-    useEffect(() => {
 
-    }, [])
+    const showRandomMedia = () => {
+        let thumbTypes;
+        return props.genresData.map((item) => {
+            thumbTypes = shuffleArray(globalState.thumbTypes)[0]
+            return (
+                <div key={item.id}>
+                    <LazyLoad offset={-400} placeholder={<PlaceHolders key={item.key} title={item.name} type={thumbTypes} />}>
+                        <MediaRow title={item.name} type={thumbTypes} endpoint={`discover/${props.query.mediaType}?with_genres=${item.id}&sort_by=popularity.desc&primary_release_year=2021`} />
+                    </LazyLoad>)
+                </div>)
+        })
+    }
+
     return AuthCheck(
-        <div>
+        < div >
             <MainLayout>
 
-                {/* <FeaturedMedia mediaUrl="https://www.youtube.com/embed/NYH2sLid0Zc?autoplay=1&mute=1&loop=1&start=16" title="Mortal Kombat" location="In theaters and on HBO MAX. Streaming throughout May 23rd." linkUrl="/movie/460465" type="front" /> */}
+                <FeaturedMedia mediaUrl={`https://image.tmdb.org/t/p/w1280${props.featuredData.backdrop_path}`}
+                    title={props.query.mediaType === 'movie' ? props.featuredData.title : props.featuredData.name}
+                    linkUrl={`/${props.query.mediaType}/${props.featuredData.id}`}
+                    type="single" />
                 <GenreNav mediaType={props.query.mediaType} genresData={props.genresData} />
-                <LazyLoad offset={-400} placeholder={<PlaceHolders title="Movies" type="large-v" />}>
-                    <MediaRow title="Movies" type="large-v" endpoint='discover/movie?sort_by=popularity.desc&primary_release_year=2021' />
-                </LazyLoad>
-
+                {showRandomMedia()}
             </MainLayout>
-        </div>
+        </div >
     )
 }
 

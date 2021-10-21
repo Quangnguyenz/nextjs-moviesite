@@ -24,7 +24,7 @@ const CastInfo = (props) => {
                 console.log(error);
 
             })
-    }, [credits])
+    }, [])
 
     console.log(credits.cast)
 
