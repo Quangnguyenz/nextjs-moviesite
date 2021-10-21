@@ -3,19 +3,19 @@ import { useStateContext } from "../../HBOProvider";
 
 const Account = (props) => {
     const globalState = useStateContext();
-    const loopComp = (comp, digit) => {
-        let thumbnails = [];
-        for (let index = 0; index < digit; index++) {
-            thumbnails.push(comp)
-        }
-        return thumbnails;
-    }
+    // const loopComp = (comp, digit) => {
+    //     let thumbnails = [];
+    //     for (let index = 0; index < digit; index++) {
+    //         thumbnails.push(comp)
+    //     }
+    //     return thumbnails;
+    // }
     return (
         <div className={`account ${globalState.accountModalOpen ? "account--active" : ""}`}>
             <div className="account__details">
                 <div className="account__title">My List</div>
                 <div className="account__watch-list">
-                    {loopComp(<div className="account__watch-video">
+                    <div className="account__watch-video">
                         <img src="https://cdn.vox-cdn.com/thumbor/SqsU_EmUY0QR_Dpl-IM3eFGFOBE=/0x0:1920x1080/1200x800/filters:focal(807x387:1113x693)/cdn.vox-cdn.com/uploads/chorus_image/image/61905501/Teen_titans.0.png" />
                         <div className="account__watch-overlay">
                             <div className="account__watch-buttons">
@@ -27,8 +27,7 @@ const Account = (props) => {
                                 </div>
                             </div>
                         </div>
-                    </div>, 6)}
-
+                    </div>
                 </div>
             </div>
             <div className="account__menu">

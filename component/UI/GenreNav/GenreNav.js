@@ -6,55 +6,32 @@ const GenreNav = (props) => {
     const globalState = useStateContext();
     const [activeNav, setActiveNav] = useState(false);
     setTimeout(() => setActiveNav(true), 100)
+    console.log(props.genresData)
     return (
-        <ul className={`genre-nav ${activeNav ? 'genre-nav--active' : ''}`}>
-            <li>
-                <Link href="/">
+        <ul className={`genre-nav ${activeNav ?
+            'genre-nav--active' : ''}`}>
+            <GenreList genresData={props.genresData} mediaType={props.mediaType} />
 
-                    <a>
-                        Home
-                    </a>
-
-                </Link>
-            </li >
-            <li>
-                <Link href="/">
-
-                    <a>
-                        Home
-                    </a>
-
-                </Link>
-            </li >
-            <li>
-                <Link href="/">
-
-                    <a>
-                        Home
-                    </a>
-
-                </Link>
-            </li >
-            <li>
-                <Link href="/">
-
-                    <a>
-                        Home
-                    </a>
-
-                </Link>
-            </li >
-            <li>
-                <Link href="/">
-
-                    <a>
-                        Home
-                    </a>
-
-                </Link>
-            </li >
         </ul >
+
     )
+}
+
+const GenreList = (props) => {
+    return props.genresData.map((item) => {
+        return (
+            <li key={item.id}>
+
+                <Link href="/">
+
+                    <a>
+                        {item.name}
+                    </a>
+
+                </Link>
+            </li >
+        )
+    })
 }
 
 export default GenreNav;
