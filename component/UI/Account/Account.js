@@ -1,5 +1,5 @@
 import { useStateContext } from "../../HBOProvider";
-
+import { useEffect } from "react";
 
 const Account = (props) => {
     const globalState = useStateContext();
@@ -10,6 +10,16 @@ const Account = (props) => {
     //     }
     //     return thumbnails;
     // }
+
+    useEffect(() => {
+        if (globalState.accountModalOpen) {
+            document.body.style.overflowY = 'hidden';
+        } else {
+            document.body.style.overflowY = 'auto';
+        }
+    }, [globalState.accountModalOpen])
+
+
     return (
         <div className={`account ${globalState.accountModalOpen ? "account--active" : ""}`}>
             <div className="account__details">

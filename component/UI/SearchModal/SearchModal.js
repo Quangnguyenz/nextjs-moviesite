@@ -1,7 +1,36 @@
 import { useStateContext } from "../../HBOProvider";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const SearchModal = (props) => {
     const globalState = useStateContext();
+    const [popData, setPopData] = useState([])
+    const [searchData, setSearchData] = useState([])
+    const [showResults, setShowResults] = useState(false)
+    const [text, setText] = useState('')
+
+    useEffect(async () => {
+        try {
+            let popData = await axios.get('https://api.themoviedb.org/3/discover/movie?primary_release_year=2021&api_key=1f3708ab08ebaadf0ef295924a2b4ac3');
+
+            setPopData(popData.data.results.filter((item, i) => i < 14))
+
+            setShowResults(false)
+            console.log('popdata', popData.data.results)
+
+        } catch (error) {
+            console.log(error)
+        }
+    }, [])
+
+    useEffect(() => {
+        if (globalState.searchOpen) {
+            document.body.style.overflowY = 'hidden';
+        } else {
+            document.body.style.overflowY = 'auto';
+        }
+    }, [globalState.searchOpen])
+
     const loopComp = (comp, digit) => {
         let thumbnails = [];
         for (let index = 0; index < digit; index++) {
