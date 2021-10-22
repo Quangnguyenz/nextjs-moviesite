@@ -11,6 +11,25 @@ const Account = (props) => {
     //     return thumbnails;
     // }
 
+    const showWatchList = () => {
+        return globalState.watchList.map((item, index) => {
+            return (
+                <div className="account__watch-video" key={index}>
+                    <img src={item.mediaUrl} />
+                    <div className="account__watch-overlay">
+                        <div className="account__watch-buttons">
+                            <div className="account__watch-circle">
+                                <i className="fas fa-play" />
+                            </div>
+                            <div className="account__watch-circle" onClick={() => globalState.removeFromList(item.mediaId)}>
+                                <i className="fas fa-times" />
+                            </div>
+                        </div>
+                    </div>
+                </div>)
+        })
+    }
+
     useEffect(() => {
         if (globalState.accountModalOpen) {
             document.body.style.overflowY = 'hidden';
@@ -25,19 +44,7 @@ const Account = (props) => {
             <div className="account__details">
                 <div className="account__title">My List</div>
                 <div className="account__watch-list">
-                    <div className="account__watch-video">
-                        <img src="https://cdn.vox-cdn.com/thumbor/SqsU_EmUY0QR_Dpl-IM3eFGFOBE=/0x0:1920x1080/1200x800/filters:focal(807x387:1113x693)/cdn.vox-cdn.com/uploads/chorus_image/image/61905501/Teen_titans.0.png" />
-                        <div className="account__watch-overlay">
-                            <div className="account__watch-buttons">
-                                <div className="account__watch-circle">
-                                    <i className="fas fa-play" />
-                                </div>
-                                <div className="account__watch-circle">
-                                    <i className="fas fa-times" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {showWatchList()}
                 </div>
             </div>
             <div className="account__menu">

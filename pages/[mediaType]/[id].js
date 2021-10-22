@@ -34,7 +34,9 @@ export default function SingleMediaPage(props) {
                 mediaUrl={`https://image.tmdb.org/t/p/w1280${props.mediaData.backdrop_path}`}
                 location="In theaters and on HBO MAX. Streaming throughout May 23rd."
                 linkUrl="/movies/id"
-                type="single" />
+                type="single"
+                mediaType={props.query.mediaType}
+                mediaId={props.query.id} />
             <LazyLoad offset={-400} placeholder={<PlaceHolders title="Movies" type="small-v" />}>
                 <MediaRow
                     updateData={props.query.id}

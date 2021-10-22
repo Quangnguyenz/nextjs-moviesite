@@ -93,6 +93,28 @@
         }
     }
 
+    &__add-btn {
+        background: transparent;
+        color: white;
+        border: 3px solid white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 20px;
+        cursor: pointer;
+        transition: background .3s ease-in-out;
+
+        &:hover {
+            background: rgb(34, 193, 195);
+            background: linear-gradient(144deg, rgba(34, 193, 195, 1) 0%, rgba(201, 45, 253, 1) 100%);
+            color: white;
+            cursor: pointer;
+        }
+    }
+
     &__info-btn {
         background: grey;
         color: white;
