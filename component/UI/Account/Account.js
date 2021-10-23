@@ -1,8 +1,11 @@
 import { useStateContext } from "../../HBOProvider";
 import { useEffect } from "react";
+import { useRouter } from "next/router";
+import ls from "local-storage";
 
 const Account = (props) => {
     const globalState = useStateContext();
+    const router = useRouter();
     // const loopComp = (comp, digit) => {
     //     let thumbnails = [];
     //     for (let index = 0; index < digit; index++) {
@@ -11,6 +14,11 @@ const Account = (props) => {
     //     return thumbnails;
     // }
 
+    const watchMedia = (url) => {
+        router.push(url)
+        globalState.setAccountModalOpenAction(!globalState.accountModalOpen)
+    }
+
     const showWatchList = () => {
         return globalState.watchList.map((item, index) => {
             return (
@@ -18,7 +26,7 @@ const Account = (props) => {
                     <img src={item.mediaUrl} />
                     <div className="account__watch-overlay">
                         <div className="account__watch-buttons">
-                            <div className="account__watch-circle">
+                            <div className="account__watch-circle" onClick={() => watchMedia(`/${item.mediaType}/${item.mediaId}`)}>
                                 <i className="fas fa-play" />
                             </div>
                             <div className="account__watch-circle" onClick={() => globalState.removeFromList(item.mediaId)}>
@@ -38,13 +46,17 @@ const Account = (props) => {
         }
     }, [globalState.accountModalOpen])
 
+    const signOut = () => {
+        ls.remove('users')
+        router.push('/create')
+    };
 
     return (
         <div className={`account ${globalState.accountModalOpen ? "account--active" : ""}`}>
             <div className="account__details">
                 <div className="account__title">My List</div>
                 <div className="account__watch-list">
-                    {showWatchList()}
+                    {globalState.watchList !== null ? showWatchList() : 'No Movies Add'}
                 </div>
             </div>
             <div className="account__menu">
@@ -56,10 +68,10 @@ const Account = (props) => {
                 <div className="side-nav__divider" />
                 <ul className="account__main">
                     <li>
-                        <a href="/">Account</a>
+                        <a onClick={signOut}>Account</a>
                     </li>
                     <li>
-                        <a href="/">Sign Out</a>
+                        <a onClick={signOut}>Sign Out</a>
                     </li>
                 </ul>
             </div>

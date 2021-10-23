@@ -107,6 +107,10 @@
         cursor: pointer;
         transition: background .3s ease-in-out;
 
+        &--hide {
+            display: none;
+        }
+
         &:hover {
             background: rgb(34, 193, 195);
             background: linear-gradient(144deg, rgba(34, 193, 195, 1) 0%, rgba(201, 45, 253, 1) 100%);
