@@ -59,7 +59,7 @@ export async function getServerSideProps(context) {
 
         featuredData = await axios.get(`https://api.themoviedb.org/3/discover/${context.query.mediaType}?primary_release_year=2021&with_genres=${context.query.genre_id}&api_key=1f3708ab08ebaadf0ef295924a2b4ac3&language=en-US`);
 
-        console.log(genresData)
+        console.log("genresData", genresData)
         console.log(featuredData)
 
     } catch (error) {
