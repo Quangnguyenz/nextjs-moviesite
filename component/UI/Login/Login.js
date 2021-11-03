@@ -30,7 +30,7 @@ const Login = () => {
             return users.map((user) => {
                 return (
                     <div onClick={() => selectUser(user.id)} className="login-user__user-box" key={user.id}>
-                        <img className="login-user__user-img" src="https://uifaces.co/our-content/donated/xZ4wg2Xj.jpg" />
+                        <img className="login-user__user-img" src="https://images.generated.photos/4J6p5QAjLZwO8tjLiAfsHfHXlHHU3hPjqHqnmuK7tSk/rs:fit:512:512/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MDM5ODg3LmpwZw.jpg" />
                         <div className="login-user__user-name">
                             {user.user}</div>
                     </div>)
