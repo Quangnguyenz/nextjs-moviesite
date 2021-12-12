@@ -19,7 +19,7 @@ const Header = (props) => {
                 <a><div className="top-header__logo"></div></a>
             </Link>
             <div className="top-header__account" onClick={() => globalState.setAccountModalOpenAction(!globalState.accountModalOpen)}>
-                <img src="https://images.generated.photos/4J6p5QAjLZwO8tjLiAfsHfHXlHHU3hPjqHqnmuK7tSk/rs:fit:512:512/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MDM5ODg3LmpwZw.jpg" className="top-header__user-img" />
+                <img src={globalState.defaultUserImage} className="top-header__user-img" />
                 <div className="top-header__username">Lance</div>
             </div>
             <Account />

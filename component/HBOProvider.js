@@ -9,7 +9,7 @@ export function useStateContext() {
 
 export function HBOProvider({ children }) {
     const [user, setUser] = useState('');
-    const defaultUserImage = 'https://images.generated.photos/4J6p5QAjLZwO8tjLiAfsHfHXlHHU3hPjqHqnmuK7tSk/rs:fit:512:512/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MDM5ODg3LmpwZw.jpg'
+    const defaultUserImage = 'https://static-media-prod-cdn.itsre-sumo.mozilla.net/static/sumo/img/default-FFA-avatar.png'
     const createUserAction = (e) => {
         setUser(e.target.value)
     }

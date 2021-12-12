@@ -19,7 +19,7 @@ export default function Home() {
     <div>
       <MainLayout>
 
-        <FeaturedMedia mediaUrl="https://www.youtube.com/embed/NYH2sLid0Zc?autoplay=1&mute=1&loop=1&start=16" title="Mortal Kombat" location="In theaters and on HBO MAX. Streaming throughout May 23rd." linkUrl="/movie/460465" type="front"
+        <FeaturedMedia mediaUrl="https://www.youtube.com/embed/9eY2W7uUkDE?autoplay=1&mute=1&loop=1&start=16" title="Spies in Disguise" location="On HBO MAX. Streaming Now." linkUrl="/movie/431693" type="front"
           mediaType='movie' mediaId='movie' />
 
         <LazyLoad offset={-400} placeholder={<PlaceHolders title="Movies" type="large-v" />}>
