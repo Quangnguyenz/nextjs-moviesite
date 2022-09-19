@@ -20,7 +20,7 @@ const Header = (props) => {
             </Link>
             <div className="top-header__account" onClick={() => globalState.setAccountModalOpenAction(!globalState.accountModalOpen)}>
                 <img src={globalState.defaultUserImage} className="top-header__user-img" />
-                <div className="top-header__username">Lance</div>
+                <div className="top-header__username">{globalState.user}</div>
             </div>
             <Account />
             <SearchModal />
